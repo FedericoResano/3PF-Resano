@@ -1,0 +1,46 @@
+<!--- Verifico que el usuario sea el ADMIN-->
+
+<body *ngIf="usuario=='ADMIN'">
+    <div class="col-md-12">
+        <h2 class="titulo" appTamanoTitulo="titulo"> {{title}} </h2>
+    </div>
+
+    <form [formGroup]="bajaFormGroup" class="example-form pagina" (ngSubmit)="submit()">
+        <!---- Cargo el formulario con sus inputs y validaciones-->
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Alumno</mat-label>
+                    <input matInput type="text" formControlName="alumno">
+                    <mat-hint align="end"></mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Curso</mat-label>
+                    <input matInput type="text" formControlName="curso">
+                </mat-form-field>
+                <div *ngIf="this.bajaFormGroup.get('curso')?.errors?.['required'] && !bajaFormGroup.get('curso')?.pristine"
+                    class="alert alert-danger">Debe seleccionar un curso</div>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Fecha de Inicio</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="fechaInicio">
+                    <mat-hint align="end">DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <div *ngIf="this.bajaFormGroup.get('fechaInicio')?.errors?.['required'] && !bajaFormGroup.get('fechaInicio')?.pristine"
+                    class="alert alert-danger">Debe ingresar la fecha de inicio del curso</div>
+            </div>
+
+        </div>
+
+
+        <div>
+            <button type="submit" mat-raised-button color="warn" class="boton">Baja</button>
+        </div>
+
+    </form>
+</body>

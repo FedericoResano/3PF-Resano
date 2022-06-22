@@ -1,0 +1,99 @@
+
+body{
+ 
+ 
+    background-size: cover;
+    min-height: 100vh;
+    max-width: 1420px;
+  }
+  table {
+    width: 100%;
+    margin-top: 40px;
+  }
+  th{
+    background-color: aliceblue;
+    color: cornflowerblue;
+    font-size: medium;
+    text-align: right;
+  }
+  td{
+    background-color: white;
+    color: cornflowerblue;
+    font-size: 1rem;
+    text-align: center;
+  
+   
+  }
+  .titulo{
+    text-align: center;
+    margin-top: 20px;
+    color:cornflowerblue;
+    
+  }
+  .cabecera{
+    text-align: center;
+  }
+  
+  section {
+    display: table;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    width: 490px;
+  }
+  
+  .example-button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+  
+  .btnEditar{
+    background-color: green;
+  }
+  .btnAgregar{
+    margin-top: 20px;
+    background-color: cornflowerblue;
+    color: white;
+  }
+  
+  .botonGrilla{
+    height: 40px!important;
+    width: 40px!important;
+    margin-left: 5px;
+  }
+  
+  .mat-icon{
+    height: 17px!important;
+  }
+  
+  .material-icons{
+    line-height: 0!important;
+  }
+  .btnAgregar2{
+    height: 10px!important;
+    font-size: bold;
+    font: 100;
+  }
+
+  .btnVermas{
+    background-color: cornflowerblue;
+  }

@@ -1,0 +1,59 @@
+<body class="container">
+
+    <div class="row">
+            <div class="col-md-9">
+                    <h2 class="titulo" appTamanoTitulo="titulo">{{pageTitle}}</h2>
+            </div>
+            <div class="col-md-3" *ngIf="usuario=='ADMIN'">
+                    <a routerLink="/alta" text="agregar">
+                            <button mat-fab color="accent" aria-label="Example icon button with a plus one icon"
+                                    class="btnAgregar" title="Alta">
+                                    <mat-icon class="btnAgregar2">+</mat-icon>
+                            </button>
+                    </a>
+            </div>
+    </div>
+
+
+    <table mat-table [dataSource]="inscripciones" class="mat-elevation-z8 tabla">
+
+
+
+            <!-- Columna Alumno -->
+            <ng-container matColumnDef="alumno">
+                    <th mat-header-cell *matHeaderCellDef class="cabecera"> Alumno </th>
+                    <td mat-cell *matCellDef="let element"> {{(element.alumno| uppercase)}}
+                    </td>
+            </ng-container>
+
+            <!-- Columna Curso -->
+            <ng-container matColumnDef="curso">
+                    <th mat-header-cell *matHeaderCellDef class="cabecera"> Curso </th>
+                    <td mat-cell *matCellDef="let element"> {{element.curso}} </td>
+            </ng-container>
+
+            <!-- Columna Mail -->
+            <ng-container matColumnDef="fechaInicio">
+                    <th mat-header-cell *matHeaderCellDef class="cabecera"> Fecha de Inicio </th>
+                    <td mat-cell *matCellDef="let element">  {{element.fechaInicio | fechaInscripciones}} </td>
+            </ng-container>
+            <ng-container matColumnDef="accion">
+                    <th mat-header-cell *matHeaderCellDef class="cabecera"></th>
+                    <td mat-cell *matCellDef="let element">
+                         
+                            <a routerLink="/baja/{{element.id}}" *ngIf="usuario=='ADMIN'">
+                                    <button class="botonGrilla" mat-fab color="warn"
+                                            aria-label="Example icon button with a delete icon" title="Baja">
+                                            <mat-icon>delete</mat-icon>
+                                    </button>
+                            </a>
+
+                    </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+
+</body>

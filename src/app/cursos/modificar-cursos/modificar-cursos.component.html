@@ -1,0 +1,48 @@
+<!--- Verifico que el usuario sea el ADMIN-->
+
+<body *ngIf="usuario=='ADMIN'">
+    <div class="col-md-12">
+        <h2 class="titulo" appTamanoTitulo="titulo"> {{title}} </h2>
+    </div>
+
+    <form [formGroup]="modificarFormGroup" class="example-form pagina" (ngSubmit)="submit()">
+        <!---- Cargo el formulario con sus inputs y validaciones-->
+        <div>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Curso</mat-label>
+                <input matInput type="text" formControlName="curso">
+                <mat-hint align="end"></mat-hint>
+            </mat-form-field>
+            <div *ngIf="this.modificarFormGroup.get('curso')?.errors?.['required'] && !modificarFormGroup.get('curso')?.pristine"
+                class="alert alert-danger">Debe ingresar el título del curso</div>
+            <div *ngIf="this.modificarFormGroup.get('curso')?.errors?.['maxlength'] && !modificarFormGroup.get('curso')?.pristine"
+                class="alert alert-danger">El título no puede exceder los 50 caracteres</div>
+        </div>
+
+
+        <div>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Duración</mat-label>
+                <input matInput type="text" formControlName="duracion">
+                <mat-hint align="end"></mat-hint>
+            </mat-form-field>
+            <div *ngIf="this.modificarFormGroup.get('duracion')?.errors?.['duracion'] && !modificarFormGroup.get('duracion')?.pristine"
+                class="alert alert-danger">Debe ingresar la duración estimada</div>
+            <div *ngIf="this.modificarFormGroup.get('duracion')?.errors?.['maxlength'] && !modificarFormGroup.get('duracion')?.pristine"
+                class="alert alert-danger">la duración puede exceder los 50 caracteres</div>
+        </div>
+        <div>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Precio</mat-label>
+                <input matInput type="number" formControlName="precio">
+                <mat-hint align="end"></mat-hint>
+            </mat-form-field>
+        </div>
+        <div *ngIf="this.modificarFormGroup.get('precio')?.errors?.['required'] && !modificarFormGroup.get('precio')?.pristine"
+            class="alert alert-danger">Debe ingresar el precio del curso</div>
+        <div>
+            <button type="submit" mat-raised-button color="primary" class="boton">Modificar</button>
+        </div>
+
+    </form>
+</body>

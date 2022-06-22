@@ -1,0 +1,55 @@
+<!--- Verifico que el usuario sea el ADMIN-->
+
+<body *ngIf="usuario=='ADMIN'">
+    <div class="col-md-12">
+        <h2 class="titulo" appTamanoTitulo="titulo"> {{title}} </h2>
+    </div>
+
+    <form [formGroup]="altaFormGroup" class="example-form pagina" (ngSubmit)="submit()">
+        <!---- Cargo el formulario con sus inputs y validaciones-->
+        <div class="row">
+        <div class="col-md-4">
+            <mat-form-field appearance="outline">
+                <mat-label>Alumno</mat-label>
+                <mat-select formControlName="idAlumno">
+                  <mat-option *ngFor="let alumno of alumnos" [value]="alumno.id">
+                    {{(alumno.apellido| uppercase) | nombre:alumno.nombre}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div *ngIf="this.altaFormGroup.get('idAlumno')?.errors?.['required'] && !altaFormGroup.get('idAlumno')?.pristine"
+                class="alert alert-danger">Debe seleccionar un alumno</div>
+        </div>
+        <div  class="col-md-4">
+            <mat-form-field appearance="outline">
+                <mat-label>Curso</mat-label>
+                <mat-select formControlName="idCurso">
+                  <mat-option *ngFor="let curso of cursos" [value]="curso.id">
+                    {{(curso.curso| uppercase)}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div *ngIf="this.altaFormGroup.get('idCurso')?.errors?.['required'] && !altaFormGroup.get('idCurso')?.pristine"
+                class="alert alert-danger">Debe seleccionar un curso</div>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Fecha de Inicio</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fechaInicio">
+                <mat-hint align="end">DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div *ngIf="this.altaFormGroup.get('fechaInicio')?.errors?.['required'] && !altaFormGroup.get('fechaInicio')?.pristine"
+                class="alert alert-danger">Debe ingresar la fecha de inicio del curso</div>
+        </div>
+
+    </div>
+
+
+        <div>
+            <button type="submit" mat-raised-button color="primary" class="boton">Alta</button>
+        </div>
+
+    </form>
+</body>

@@ -1,0 +1,35 @@
+<body class="container">
+    
+
+    <form [formGroup]="loginFormGroup" class="example-form pagina" (ngSubmit)="submit()">
+    
+    <div class="form horizontal">
+        <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" class="card text-white mb-3 anchocard login">
+           <span class="mensaje"> Ingrese admin para tener permisos de administrador o cualquier alias para ingresar 
+               como usuario generico</span>
+            <div class="card-body">
+                    
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Usuario</mat-label>
+                        <!-- Paso el input a Mayusculas para que no me modifique como lo carga el usuario-->
+                        <input matInput type="text" oninput="this.value = this.value.toUpperCase()" formControlName="Usuario">
+                        <mat-hint align="end"></mat-hint>
+                    </mat-form-field>
+                    <div *ngIf="this.loginFormGroup.get('Usuario')?.errors?.['required'] && !loginFormGroup.get('Usuario')?.pristine"
+                    class="alert alert-danger">Debe ingresar el usuario</div>
+                    <div>
+                        <button type="submit" mat-raised-button color="primary" class="boton">Iniciar Sesion</button>
+                    </div>
+    
+                
+            </div>
+        
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    </div>
+    </form>
+    
+    </body>

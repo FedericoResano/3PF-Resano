@@ -1,0 +1,23 @@
+<div class="border-end bg-blue sidebar" id="sidebar-wrapper">
+    <div class="list-group list-group-flush sidebar">
+        <a class="list-group-item list-group-item-action list-group-item-action p-3 nav-link sidebar"
+        [routerLink]="['/inicio']">Inicio</a>
+    </div>
+    <div class="list-group list-group-flush sidebar">
+        <a class="list-group-item list-group-item-action list-group-item-action p-3 nav-link sidebar"
+            [routerLink]="['/alumnos']">Alumnos</a>
+    </div>
+    <div class="list-group list-group-flush sidebar">
+        <a class="list-group-item list-group-item-action list-group-item-action p-3 nav-link sidebar"
+            [routerLink]="['/cursos']">Cursos</a>
+    </div>
+    <div class="list-group list-group-flush sidebar">
+        <a class="list-group-item list-group-item-action list-group-item-action p-3 nav-link sidebar"
+            [routerLink]="['/inscripciones']">Inscripciones</a>
+    </div>
+    <div class="list-group list-group-flush sidebar">
+        <a class="list-group-item list-group-item-action list-group-item-action p-3 nav-link sidebar"
+            [routerLink]="['']" (click)="cerrarSesion()">Cerrar Sesión</a>
+    </div>
+</div>
+

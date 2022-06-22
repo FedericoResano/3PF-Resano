@@ -1,0 +1,71 @@
+<body>
+    <div class="col-md-12">
+        <h2 class="titulo" appTamanoTitulo="titulo"> {{title}} </h2>
+    </div>
+
+    <form [formGroup]="detalleFormGroup" class="example-form pagina">
+        <!---- Cargo el formulario con sus inputs y validaciones-->
+        <div>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Curso</mat-label>
+                <input matInput type="text" formControlName="curso">
+                <mat-hint align="end"></mat-hint>
+            </mat-form-field>
+            <div *ngIf="this.detalleFormGroup.get('curso')?.errors?.['required'] && !detalleFormGroup.get('curso')?.pristine"
+                class="alert alert-danger">Debe ingresar el título del curso</div>
+            <div *ngIf="this.detalleFormGroup.get('curso')?.errors?.['maxlength'] && !detalleFormGroup.get('curso')?.pristine"
+                class="alert alert-danger">El título no puede exceder los 50 caracteres</div>
+        </div>
+
+
+        <div>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Duración</mat-label>
+                <input matInput type="text" formControlName="duracion">
+                <mat-hint align="end"></mat-hint>
+            </mat-form-field>
+            <div *ngIf="this.detalleFormGroup.get('duracion')?.errors?.['duracion'] && !detalleFormGroup.get('duracion')?.pristine"
+                class="alert alert-danger">Debe ingresar la duración estimada</div>
+            <div *ngIf="this.detalleFormGroup.get('duracion')?.errors?.['maxlength'] && !detalleFormGroup.get('duracion')?.pristine"
+                class="alert alert-danger">la duración puede exceder los 50 caracteres</div>
+        </div>
+        <div>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Precio</mat-label>
+                <input matInput type="number" formControlName="precio">
+                <mat-hint align="end"></mat-hint>
+            </mat-form-field>
+        </div>
+        <div *ngIf="this.detalleFormGroup.get('precio')?.errors?.['required'] && !detalleFormGroup.get('precio')?.pristine"
+            class="alert alert-danger">Debe ingresar el precio del curso</div>
+
+    </form>
+    <form class="tabla" *ngIf='inscripciones.length'>
+        <table mat-table [dataSource]="inscripciones" class="mat-elevation-z8 tabla">
+
+            <!-- Columna Alumno -->
+            <ng-container matColumnDef="inscripciones">
+                <th mat-header-cell *matHeaderCellDef class="cabecera"> Alumnos Inscriptos </th>
+                <td mat-cell *matCellDef="let element"> {{element.alumno}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="accion">
+                <th mat-header-cell *matHeaderCellDef class="cabecera">Dar de baja</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-raised-button color="warn" class="example-button-row"
+                        *ngIf="usuario=='ADMIN'" (click)="desinscribirAlumno(element.id)">Desinscribir</button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+
+
+    </form>
+
+    <div>
+        <button type="submit" mat-raised-button color="primary" class="boton" (click)="submit()">Volver</button>
+    </div>
+
+</body>

@@ -1,0 +1,27 @@
+<body>
+    <div class="pagina">
+        <div> </div>
+        
+        <div>
+            <h2 appTamanoTitulo="titulo">Bienvenido</h2>
+            <p>Dirigete a Alumnos para ver todos los alumnos registrados</p>
+        </div>
+        <div *ngIf="usuario=='ADMIN'">
+            <p>Desde allí podrás modificar, eliminar o dar de alta alumnos!</p>
+        </div>
+
+        <div>
+            <p>Dirigete a Cursos para ver todos los curso existentes</p>
+        </div>
+        <div *ngIf="usuario=='ADMIN'">
+            <p>Desde allí podrás modificar, eliminar o dar de alta cursos!</p>
+        </div>
+
+        <div>
+            <p>Dirigete a Inscripciones para ver todas las inscripciones</p>
+        </div>
+        <div *ngIf="usuario=='ADMIN'">
+            <p>Desde allí podrás eliminar o dar de alta inscripciones!</p>
+        </div>
+    </div>
+    </body>

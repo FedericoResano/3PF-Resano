@@ -1,0 +1,89 @@
+<!--- Verifico que el usuario sea el ADMIN-->
+
+<body *ngIf="usuario=='ADMIN'">
+    <div class="col-md-12">
+        <h2 class="titulo" appTamanoTitulo="titulo"> {{title}} </h2>
+    </div>
+
+    <form [formGroup]="eliminarFormGroup" class="example-form pagina" (ngSubmit)="submit()">
+        <!---- Cargo el formulario con sus inputs y validaciones-->
+        <form [formGroup]="eliminarFormGroup" class="example-form pagina" (ngSubmit)="submit()">
+            <!---- Cargo el formulario con sus inputs y validaciones-->
+            <div class="form">
+                <div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Usuario</mat-label>
+                        <input matInput type="text" formControlName="usuario" [disabled]="true">
+                        <mat-hint align="end"></mat-hint>
+                    </mat-form-field>
+                    <div *ngIf="this.eliminarFormGroup.get('usuario')?.errors?.['required'] && !eliminarFormGroup.get('usuario')?.pristine"
+                        class="alert alert-danger">Debe ingresar el apellido de la persona</div>
+                    <div *ngIf="this.eliminarFormGroup.get('usuario')?.errors?.['maxlength'] && !eliminarFormGroup.get('usuario')?.pristine"
+                        class="alert alert-danger">El nombre puede exceder los 100 caracteres</div>
+                </div>
+
+
+                <div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Apellido</mat-label>
+                        <input matInput type="text" formControlName="apellido">
+                        <mat-hint align="end"></mat-hint>
+                    </mat-form-field>
+                    <div *ngIf="this.eliminarFormGroup.get('apellido')?.errors?.['required'] && !eliminarFormGroup.get('apellido')?.pristine"
+                        class="alert alert-danger">Debe ingresar el apellido de la persona</div>
+                    <div *ngIf="this.eliminarFormGroup.get('apellido')?.errors?.['maxlength'] && !eliminarFormGroup.get('apellido')?.pristine"
+                        class="alert alert-danger">El nombre puede exceder los 100 caracteres</div>
+                </div>
+                <div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput type="text" formControlName="nombre">
+                        <mat-hint align="end"></mat-hint>
+                    </mat-form-field>
+                    <div *ngIf="this.eliminarFormGroup.get('nombre')?.errors?.['required'] && !eliminarFormGroup.get('nombre')?.pristine"
+                        class="alert alert-danger">Debe ingresar el nombre de la persona</div>
+                    <div *ngIf="this.eliminarFormGroup.get('nombre')?.errors?.['maxlength'] && !eliminarFormGroup.get('nombre')?.pristine"
+                        class="alert alert-danger">El nombre puede exceder los 100 caracteres</div>
+                </div>
+                <div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Edad</mat-label>
+                        <input matInput type="text" formControlName="edad">
+                        <mat-hint align="end"></mat-hint>
+                    </mat-form-field>
+                    <div *ngIf="this.eliminarFormGroup.get('edad')?.errors?.['required'] && !eliminarFormGroup.get('edad')?.pristine"
+                        class="alert alert-danger">Debe ingresar la edad</div>
+                    <div *ngIf="this.eliminarFormGroup.get('edad')?.errors?.['max'] && !eliminarFormGroup.get('edad')?.pristine"
+                        class="alert alert-danger">La edad no puede exceder los 99 años</div>
+                </div>
+                <div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Fecha de Nacimiento</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+                        <mat-hint align="end">MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <div *ngIf="this.eliminarFormGroup.get('fechaNacimiento')?.errors?.['required'] && !eliminarFormGroup.get('fechaNacimiento')?.pristine"
+                        class="alert alert-danger">Debe ingresar la fecha de nacimiento</div>
+                </div>
+
+                <div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Mail</mat-label>
+                        <input matInput type="text" formControlName="mail">
+                        <mat-hint align="end"></mat-hint>
+                    </mat-form-field>
+                    <div *ngIf="this.eliminarFormGroup.get('mail')?.errors?.['required'] && !eliminarFormGroup.get('mail')?.pristine"
+                        class="alert alert-danger">Debe ingresar el nombre de la persona)</div>
+                    <div *ngIf="this.eliminarFormGroup.get('mail')?.errors?.['email'] && !eliminarFormGroup.get('mail')?.pristine"
+                        class="alert alert-danger">El mail tiene un formato invalido</div>
+                </div>
+            </div>
+            <div>
+                <button type="submit" mat-raised-button color="warn" class="boton">Eliminar</button>
+            </div>
+
+        </form>
+    </form>
+</body>
